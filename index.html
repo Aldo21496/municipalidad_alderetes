@@ -17,12 +17,21 @@
         <span>Municipalidad de Alderetes</span>
       </a>
       <button class="menu-toggle" aria-label="Abrir menú">
-        <img src="assets/img/bars.svg" alt="Menú" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+          <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+        </svg>
       </button>
       <ul class="menu">
+        <li class="close-menu-button">
+          <button class="close-menu" aria-label="Cerrar menú">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+              <path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7a1 1 0 0 0-1.41 1.42L10.59 12l-4.89 4.88a1 1 0 1 0 1.41 1.42L12 13.41l4.88 4.89a1 1 0 0 0 1.42-1.41L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41z"/>
+            </svg>
+          </button>
+        </li>
         <li><a href="#inicio">Inicio</a></li>
         <li class="has-submenu">
-          <a href="#">Institucional</a>
+          <a href="#">Institucional ▼</a>
           <ul class="submenu">
             <li><a href="#intendenta">Intendenta</a></li>
             <li><a href="#municipalidad">Municipalidad</a></li>
@@ -30,14 +39,14 @@
           </ul>
         </li>
         <li class="has-submenu">
-          <a href="#">Secretarías</a>
+          <a href="#">Secretarías ▼</a>
           <ul class="submenu">
             <li><a href="#gobierno">Gobierno</a></li>
             <li><a href="#obras">Obras</a></li>
           </ul>
         </li>
         <li class="has-submenu">
-          <a href="#">Educación y Cultura</a>
+          <a href="#">Educación y Cultura ▼</a>
           <ul class="submenu">
             <li><a href="#autoridades">Autoridades</a></li>
             <li><a href="#proyectos">Proyectos</a></li>
@@ -51,23 +60,63 @@
   <main>
     <section id="inicio">
       <h1>Bienvenidos a Alderetes</h1>
-      <img src="assets/img/municipio_alderetes.jpg" width="100px" alt="Foto de Alderetes" class="portada">
+      <img src="assets/img/municipio_alderetes.jpg" alt="Foto de Alderetes" class="portada">
+    </section>
+
+    <section id="filtros">
+      <h3>Filtrar por categoría:</h3>
+      <select id="filtro-categoria">
+        <option value="todas">Todas</option>
+        <option value="educacion">Educación</option>
+        <option value="salud">Salud</option>
+        <option value="obras">Obras</option>
+      </select>
     </section>
 
     <section id="noticias">
       <h2>Noticias Recientes</h2>
       <div class="noticias-grid">
-        <article class="noticia">
-          <img src="assets/img/noticia1.jpg" alt="Noticia 1">
-          <h3>Título de la noticia</h3>
-          <p>Resumen breve de la noticia para que el lector se interese.</p>
+        <article class="noticia" data-categoria="educacion">
+          <img src="assets/img/noticia1.jpg" alt="Noticia Educación">
+          <h3>Entrega de útiles escolares</h3>
+          <p class="resumen">Se entregaron útiles escolares a estudiantes del nivel primario.</p>
+          <div class="contenido-completo">
+            <p>Más de 1000 alumnos recibieron kits escolares para el inicio del ciclo lectivo.</p>
+          </div>
+          <button class="leer-mas">Leer más...</button>
         </article>
-        <article class="noticia">
-          <img src="assets/img/noticia2.jpg" alt="Noticia 2">
-          <h3>Otra noticia destacada</h3>
-          <p>Un subtítulo con información relevante que puede ampliarse en otra página.</p>
+
+        <article class="noticia" data-categoria="salud">
+          <img src="assets/img/noticia2.jpg" alt="Noticia Salud">
+          <h3>Jornada de vacunación</h3>
+          <p class="resumen">Se llevó a cabo una jornada de vacunación gratuita en el barrio norte.</p>
+          <div class="contenido-completo">
+            <p>Vecinos de todas las edades participaron de la actividad organizada por el área de Salud.</p>
+          </div>
+          <button class="leer-mas">Leer más...</button>
+        </article>
+
+        <article class="noticia" data-categoria="obras">
+          <img src="assets/img/noticia3.jpg" alt="Noticia Obras">
+          <h3>Inauguración de pavimento</h3>
+          <p class="resumen">Se inauguró un nuevo tramo de pavimento en el barrio Belgrano.</p>
+          <div class="contenido-completo">
+            <p>La obra mejora el acceso a escuelas y centros de salud de la zona.</p>
+          </div>
+          <button class="leer-mas">Leer más...</button>
+        </article>
+
+        <article class="noticia" data-categoria="educacion">
+          <img src="assets/img/noticia4.jpg" alt="Noticia Educación 2">
+          <h3>Capacitación docente</h3>
+          <p class="resumen">Se realizó una jornada de formación para docentes de nivel inicial.</p>
+          <div class="contenido-completo">
+            <p>La capacitación incluyó talleres sobre innovación pedagógica y herramientas digitales.</p>
+          </div>
+          <button class="leer-mas">Leer más...</button>
         </article>
       </div>
+      <div class="paginacion" id="paginacion"></div>
     </section>
   </main>
 
@@ -78,8 +127,10 @@
       <a href="#"><img src="assets/img/ic-youtube.svg" alt="YouTube"></a>
       <a href="mailto:contacto@alderetes.gob.ar"><img src="assets/img/email_icon.png" alt="Email"></a>
     </div>
-    <p>&copy; 2025 Municipalidad de Alderetes. Todos los derechos reservados.</p>
+    <p>&copy; 2025 ReinArhin. Todos los derechos reservados.</p>
   </footer>
+  <!-- Botón flotante volver arriba -->
+  <button id="btn-volver-arriba" aria-label="Volver arriba">↑</button>
 </body>
 
 </html>
